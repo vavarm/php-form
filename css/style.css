@@ -28,7 +28,7 @@ nav {
 }
 
 .logo {
-    height: calc(var(--header-height)+2vh);
+    height: calc(var(--header-height)+4vh);
 }
 
 .index-list {
