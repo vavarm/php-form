@@ -9,8 +9,8 @@ include_once 'header.php';
             <input type="text" name="name" placeholder="Full name..." />
             <input type="text" name="email" placeholder="Email..." />
             <input type="text" name="uid" placeholder="Username..." />
-            <input type="passsword" name="pwd" placeholder="Password..." />
-            <input type="passsword" name="pwdrepeat" placeholder="Repeat password..." />
+            <input type="password" name="pwd" placeholder="Password..." />
+            <input type="password" name="pwdrepeat" placeholder="Repeat password..." />
             <button type="submit" name="submit">Sign Up</button>
         </form>
     </div>

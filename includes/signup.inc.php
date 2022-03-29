@@ -12,6 +12,7 @@ if (isset($_POST["submit"])) {
     require_once 'dbh.inc.php';
     require_once 'functions.inc.php';
 
+    //check if the user credentials match the structure of the database
     if (emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat) !== false) {
         header("location: ../signup.php?error=emptyinput");
         exit();
@@ -28,13 +29,13 @@ if (isset($_POST["submit"])) {
         header("location: ../signup.php?error=pwddontmatch");
         exit();
     }
-    if (uidExists($conn, $username) !== false) {
+    if (uidExists($conn, $username, $email) !== false) {
         header("location: ../signup.php?error=usernametaken");
         exit();
     }
 
     createUser($conn, $name, $email, $username, $pwd);
 } else {
-    header("location: ../signup.php"); //go to main page
+    header("location: ../signup.php"); //return to signup page
     exit();
 }
