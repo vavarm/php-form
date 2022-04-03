@@ -38,7 +38,7 @@ function pwdMatch($pwd, $pwdRepeat)
 
 function uidExists($conn, $username, $email)
 {
-    $sql = "SELECT * FROM user WHERE userId = ? OR userEmail = ?;";
+    $sql = "SELECT * FROM user WHERE userUid = ? OR userEmail = ?;";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../signup.php?error=stmtfailed");
