@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <title>PHP-FORM</title>
@@ -7,13 +7,7 @@
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/style.css" />
 
-    <meta charset="UTF-8">
-    <meta name="description" content="Free Web tutorials">
-    <meta name="keywords" content="HTML, CSS, JavaScript">
-    <meta name="author" content="John Doe">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
-    <meta HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" ; name="description" content="Profile System" ; name="keywords" content="HTML, CSS, PHP, SQL" ; name="author" content="VaVarm" ; name="viewport" content="width=device-width, initial-scale=1.0" ; HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE" ; HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
 </head>
 
 <body>
