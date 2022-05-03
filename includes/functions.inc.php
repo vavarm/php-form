@@ -36,6 +36,8 @@ function pwdMatch($pwd, $pwdRepeat)
     return $result;
 }
 
+//TODO - change SQL requests by PDO
+
 function uidExists($conn, $username, $email)
 {
     $sql = "SELECT * FROM user WHERE userUid = ? OR userEmail = ?;";
@@ -50,7 +52,7 @@ function uidExists($conn, $username, $email)
 
     $resultData = mysqli_stmt_get_result($stmt);
 
-    if ($row = mysqli_fetch_assoc($resultData)) {
+    if ($row = mysqli_fetch_assoc($resultData)) { // fetch_assoc return 0 if the resultData does not contain any rows
         $result = $row;
     } else {
         $result = false;
@@ -61,6 +63,8 @@ function uidExists($conn, $username, $email)
     return $result;
 }
 
+//TODO - change SQL requests by PDO
+
 function createUser($conn, $name, $email, $username, $pwd)
 {
     $sql = "INSERT INTO user (userName, userEmail, userUid, userPwd) VALUES (?, ?, ?, ?);";
@@ -70,7 +74,7 @@ function createUser($conn, $name, $email, $username, $pwd)
         exit();
     }
 
-    $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
+    $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT); //TODO - look at the different methods of hash
 
     mysqli_stmt_bind_param($stmt, "ssss", $name, $email, $username, $hashedPwd);
     mysqli_stmt_execute($stmt);
@@ -78,6 +82,40 @@ function createUser($conn, $name, $email, $username, $pwd)
     mysqli_stmt_close($stmt);
     header("location: ../signup.php?error=none");
     exit();
+}
+
+function emptyInputLogin($username, $pwd)
+{
+    $result = false;
+    if (empty($username) || empty($pwd)) {
+        $result = true;
+    }
+    return $result;
+}
+
+function loginUser($conn, $username, $pwd)
+{
+    $uidExists = uidExists($conn, $username, $username);
+
+    if ($uidExists == false) {
+        header("location: ../login.php?error=wronglogin");
+        exit();
+    }
+
+    $pwdHashed = $uidExists["userPwd"];
+
+    $checkPwd = password_verify($pwd, $pwdHashed);
+
+    if ($checkPwd === false) {
+        header("location: ../login.php?error=wronglogin");
+        exit();
+    } else if ($checkPwd === true) {
+        session_start();
+        $_SESSION["userid"] = $uidExists["userId"];
+        $_SESSION["useruid"] = $uidExists["userUid"];
+        header("location: ../index.php");
+        exit();
+    }
 }
 
 // TODO - create a bunch of functions to verify the values entered by the user
