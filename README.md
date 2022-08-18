@@ -4,4 +4,4 @@ PHP Login and Signup Website
 
 > Work In Progress
 
-> see the advancements in the Develop branch
+> see the advancements in the develop branch
